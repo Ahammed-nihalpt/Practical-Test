@@ -6,9 +6,7 @@ function Dashboard() {
     <div className="home">
       <div>
         <h1>
-          Welcome to your ultimate resource for all things computers - explore
-          <br />
-          specs, reviews and more with ease!
+          Welcome to our website - your go-to source for all things servers!
         </h1>
       </div>
     </div>

@@ -1,0 +1,64 @@
+.filter {
+  margin-top: 50px;
+  background-color: blanchedalmond;
+  width: 70%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter .slid_filter {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter .slid_filter .filter_lable {
+  font-size: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.filter .slid_filter .sld_range {
+  width: 600px;
+}
+
+.range_filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chk_box {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.chk_box div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
+.dropdown_filter {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.Filter_head {
+  font-size: xx-large;
+  font-weight: bolder;
+}
+.filter_head_div {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
