@@ -1,0 +1,26 @@
+.nav {
+  background-color: blue;
+  height: 50px;
+  position: fixed;
+  width: 100%;
+}
+
+.nav .options {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  height: 100%;
+  padding-left: 10px;
+}
+
+.nav .options button {
+  background: none;
+  border: none;
+  padding: 4px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.nav .options button:hover {
+  color: aliceblue;
+}
