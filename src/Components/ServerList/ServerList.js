@@ -12,6 +12,11 @@ function ServerList({ servers, displayLimit }) {
           <label htmlFor=""> Price: {server.Price}</label>
         </div>
       ))}
+      {servers.length <= 0 && (
+        <div className="server_details">
+          <label htmlFor=""> No servers</label>
+        </div>
+      )}
     </div>
   );
 }

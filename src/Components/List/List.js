@@ -4,7 +4,7 @@ import servers from "../../Data/ServerData.json";
 import Context from "../../Context/Context";
 import "./List.css";
 
-const ServerList = lazy(() => import("./ServerList"));
+const ServerList = lazy(() => import("../ServerList/ServerList"));
 
 function List() {
   const initialvalue = {
@@ -19,9 +19,11 @@ function List() {
 
   useEffect(() => {
     let filteredData = [];
+    let data = [];
     let filterIs = false;
+    data = servers;
     if (filterData.storage !== "all") {
-      const filteredServers = servers.filter((server) => {
+      const filteredServers = data.filter((server) => {
         const matchResult = server.HDD.match(/x(\d+)/);
         let number = matchResult ? parseInt(matchResult[1]) : null;
         if (parseInt(filterData.storage.match(/\d+/)[0]) <= 72) {
@@ -41,9 +43,7 @@ function List() {
               number * 1000 <= parseInt(filterData.storage.match(/\d+/)[0])
             );
           } else {
-            return (
-              number <= parseInt(filterData.storage.match(/\d+/)[0]) * 1000
-            );
+            return number <= parseInt(filterData.storage.match(/\d+/)[0]);
           }
         }
       });
@@ -52,21 +52,21 @@ function List() {
       filterIs = true;
     }
     if (filterData.ram.length > 0) {
-      const result = servers.filter((item) =>
+      const result = data.filter((item) =>
         filterData.ram.some((r) => item.RAM.includes(r))
       );
       filteredData = [...filteredData, ...result];
       filterIs = true;
     }
     if (filterData.harddisk !== "all") {
-      const result = servers.filter((item) =>
+      const result = data.filter((item) =>
         item.HDD.includes(filterData.harddisk)
       );
       filteredData = [...filteredData, ...result];
       filterIs = true;
     }
     if (filterData.location !== "all") {
-      const result = servers.filter((item) =>
+      const result = data.filter((item) =>
         item.Location.includes(filterData.location)
       );
       filteredData = [...filteredData, ...result];
@@ -78,6 +78,7 @@ function List() {
     } else {
       setServerData(servers);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterData]);
 
   return (
@@ -91,12 +92,14 @@ function List() {
           <Suspense fallback={<div>Loading...</div>}>
             <ServerList servers={serverData} displayLimit={displayLimit} />
           </Suspense>
-          <button
-            className="load_more_btn"
-            onClick={() => setDisplayLimit(displayLimit + 12)}
-          >
-            Load More
-          </button>
+          {serverData.length > 0 && (
+            <button
+              className="load_more_btn"
+              onClick={() => setDisplayLimit(displayLimit + 12)}
+            >
+              Load More
+            </button>
+          )}
         </div>
       </div>
     </div>
